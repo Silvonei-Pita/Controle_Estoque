@@ -21,7 +21,6 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        //Adicionar valor de Estoque Máximo aos produtos.
         
         // Criação do Estoque
         Estoque estoque = new Estoque();
@@ -82,10 +81,14 @@ public class Main {
                 20,
                 100));
         
+        
+        // -------------------------------------------------------- Início -------------------------------------------------------------------
         System.out.println("Bem-vindo ao Sistema de Controle de Estoque ArmaTech");
         
+        // Loop do Menu Principal
         do{
             
+            // Menu Principal
             System.out.println("Insira o código correspondente à ação desejada.");
             System.out.println("[1] Consultar Estoque"); 
             System.out.println("[2] Acrescentar Produto");
@@ -94,12 +97,13 @@ public class Main {
             opcao = Integer.parseInt(entrada.nextLine());
             
             switch(opcao){
+                //[1] Consultar Estoque
                 case 1: 
                    estoque.listarProdutos();
                        
                 break;
                 
-                
+                //[2] Acrescentar Produto
                 case 2:
                    System.out.println("Acrescentar Produto");
                    System.out.println("-------------------");
@@ -113,6 +117,7 @@ public class Main {
                    
                 break;
                 
+                //[3] Subtrair Produto
                 case 3:
                    System.out.println("Subtrair Produto");
                    System.out.println("-------------------");
@@ -126,9 +131,10 @@ public class Main {
                 
                 break;
                 
+                //[4] Gerenciar Estoque
                 case 4:
                     opcaoSwitch = 0;
-                    while(opcaoSwitch == 0){
+                    while(opcaoSwitch != 4){
                         System.out.println("------------------------");
                         System.out.println("Gerenciamento de Estoque");
                         System.out.println("------------------------");
@@ -136,15 +142,17 @@ public class Main {
                         System.out.println("[1] Consultar Estoque");
                         System.out.println("[2] Adicionar novo Produto");
                         System.out.println("[3] Remover um Produto");
-                        System.out.println("[4] Atualizar um Produto");
+                        System.out.println("[4] Sair");
                         opcaoSwitch = Integer.parseInt(entrada.nextLine());
                         
                        switch (opcaoSwitch){
                            
+                           //[1] Consultar Estoque
                            case 1:
                                estoque.listarProdutos();
                            break;
-                                    
+                           
+                           //[2] Adicionar novo Produto
                            case 2:
                                System.out.println("Insira o código de barras do novo Produto: ");
                                codigoBarras = entrada.nextLine();
@@ -175,10 +183,25 @@ public class Main {
                                 ));
                                
                                System.out.println("Produto adicionado com sucesso");
-                               
-                               
+                                
+                           break;
+                           
+                           // [3] Remover um Produto
+                           case 3:
+                               System.out.println("Insira o código de barras Produto a ser removido: ");
+                               codigoBarras = entrada.nextLine();
+                               estoque.removerProduto(codigoBarras);
+                               System.out.println("Produto removido com sucesso");
                                
                            break;
+                           
+                           // [4] Sair
+                           case 4:
+                               System.out.println("Retornando ao menu principal.");
+                               System.out.println("");
+                           break;
+                           
+                           
                            
                        }  
                     }
