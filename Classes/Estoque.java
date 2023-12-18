@@ -15,14 +15,65 @@ public class Estoque {
         this.listaDeProdutos = new ArrayList<>();
     }
     
+    //Métodos
+    
+    public void acrescentarProduto(String codigoBarras, int quantidade){
+        String resultado = "fracasso";
+        for(int i = 0; i < listaDeProdutos.size(); i++){
+           if(listaDeProdutos.get(i).getCodigoBarras().equals(codigoBarras)){
+               listaDeProdutos.get(i).quantidade += quantidade;
+               resultado = "sucesso";
+           }    
+        }
+        if(!resultado.equals("sucesso")){
+            throw new ECodigoInvalidoException("Produto com o código inserido não foi encontrado");
+        }
+    } 
+ 
+    public void subtrairProduto(String codigoBarras, int quantidade){
+        String resultado = "fracasso";
+        for(int i = 0; i < listaDeProdutos.size(); i++){
+           if(listaDeProdutos.get(i).getCodigoBarras().equals(codigoBarras)){
+               listaDeProdutos.get(i).quantidade -= quantidade;
+               resultado = "sucesso";
+           }    
+        }
+        if(!resultado.equals("sucesso")){
+            throw new ECodigoInvalidoException("Produto com o código inserido não foi encontrado");
+        }
+    }
+    
+
     public void adicionarProduto(Produto produto){
         listaDeProdutos.add(produto);
     }
 
-    public List<Produto> listarProdutos() {
-        return listaDeProdutos;
+    /*
+    public void listarProdutos() {
+        System.out.println("[A] código de Barras / [B] nome / [C] categoria / [D] quantidade / [E] precoUnitario / [F] precoKg / [G] lote / [H] descricao / [I] fornecedor");
+        for(int i = 0; i < listaDeProdutos.size(); i++){
+            System.out.println(listaDeProdutos.get(i));
+        }
+        
     }
+    */
     
+    public void listarProdutos(){
+        System.out.println("----------------------------------------------------------------------------------------------------");
+        System.out.println("[A] código de Barras / [B] nome / [C] categoria / [D] quantidade / [E] precoUnitario / [F] precoKg /");
+        System.out.println("----------------------------------------------------------------------------------------------------");
+        for(int i = 0; i < listaDeProdutos.size(); i++){
+            System.out.println(
+                    "[A] " + listaDeProdutos.get(i).getCodigoBarras()
+                           + "/ [B] " + listaDeProdutos.get(i).getNome()
+                           + "/ [C] " + listaDeProdutos.get(i).getCategoria()
+                           + "/ [D] " + listaDeProdutos.get(i).getQuantidade()
+                           + "/ [E] " + listaDeProdutos.get(i).getPrecoUnitario()
+                           + "/ [F] " + listaDeProdutos.get(i).getPrecoKg()
+  
+            );
+        }
+    }
             
          
 }   

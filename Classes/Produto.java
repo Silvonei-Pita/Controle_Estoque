@@ -14,11 +14,12 @@ public class Produto {
     private String descricao;
     private double precoUnitario;
     private double precoKg;
-    private int quantidade;
-    private Lote lote;
+    protected int quantidade;
+    private int estoqueMax;
+    
 
     // Construtor 
-    public Produto(String codigoBarras, String nome, Fornecedor fornecedor, Categoria categoria, String descricao, double precoUnitario, double precoKg, int quantidade, Lote lote) {
+    public Produto(String codigoBarras, String nome, Fornecedor fornecedor, Categoria categoria, String descricao, double precoUnitario, double precoKg, int quantidade, int estoqueMax) {
         this.codigoBarras = codigoBarras;
         this.nome = nome;
         this.fornecedor = fornecedor;
@@ -27,18 +28,15 @@ public class Produto {
         this.precoUnitario = precoUnitario;
         this.precoKg = precoKg;
         this.quantidade = quantidade;
-        this.lote = lote;
+        this.estoqueMax = estoqueMax;
     }
 
     // To String
     @Override
     public String toString() {
-        return "Produto{" + "codigoBarras=" + codigoBarras + ", nome=" + nome + ", fornecedor=" + fornecedor + ", categoria=" + categoria + ", descricao=" + descricao + ", precoUnitario=" + precoUnitario + ", precoKg=" + precoKg + ", quantidade=" + quantidade + ", lote=" + lote + '}';
-    }
+        return "[A] " + codigoBarras + " / [B] " + nome + " / [C] " + categoria + " / [D] " + quantidade + " / [E] " + precoUnitario + " / [F] " + precoKg + " / [G] " + descricao + " / [H] " + fornecedor.getNome() + " / [I] " + estoqueMax;    }
 
-    
    
-    
     // Getters 
     public String getCodigoBarras() {
         return codigoBarras;
@@ -72,9 +70,12 @@ public class Produto {
         return quantidade;
     }
 
-    public Lote getLote() {
-        return lote;
+    public int getEstoqueMax() {
+        return estoqueMax;
     }
+
+    
+    
      
      
     
